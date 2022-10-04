@@ -219,7 +219,7 @@ app.get("/", async (e, r) => {
     r.status(404).sendFile(process.cwd() + "/public/404.html");
   }),
   connectMongoDb().then(() => {
-   https.createServer(ssl, app).listen(443);
+   //https.createServer(ssl, app).listen(443);
     app.listen(PORT, () => {
       console.log(
         chalk.green(`example app listening at http://localhost:${PORT}`)
