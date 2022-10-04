@@ -135,25 +135,8 @@ app.use(limiter),
     } catch (e) {
       console.error(e), r.status(500).end();
     }
-  }),
-  app.use(async (req, res, next) => {
-    domain = "https://kuttobot.herokuapp.com/";
-    if (req.protocol !== "https" && process.env.HTTPS)
-      return res.redirect("https://" + req.hostname + req.url);
-    if (
-      osut.os.ip() == req.hostname ||
-      req.headers["cdn-loop"] !== "cloudflare"
-    )
-      return res
-        .status(403)
-        .send(
-          `<center><h1><b>Access Denied!!!</b></h1></br>Ray ID : ${require("crypto")
-            .randomBytes(20)
-            .toString("hex")
-            .slice(0, 10)}</center>`
-        );
-    next();
   });
+
 const ssl = {
   key: fs.readFileSync(__dirname + "/ssl/private.key", "utf8"),
   cert: fs.readFileSync(__dirname + "/ssl/public.cert", "utf8"),
