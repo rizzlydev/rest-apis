@@ -136,7 +136,7 @@ app.use(limiter),
       console.error(e), r.status(500).end();
     }
   }),
-  app.use(async (req, res, next) => {
+/*  app.use(async (req, res, next) => {
     domain = "caliphapi.com";
     if (req.protocol !== "https" && process.env.HTTPS)
       return res.redirect("https://" + req.hostname + req.url);
@@ -153,7 +153,7 @@ app.use(limiter),
             .slice(0, 10)}</center>`
         );
     next();
-  });
+  });*/
 const ssl = {
   key: fs.readFileSync(__dirname + "/ssl/private.key", "utf8"),
   cert: fs.readFileSync(__dirname + "/ssl/public.cert", "utf8"),
