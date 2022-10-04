@@ -136,8 +136,8 @@ app.use(limiter),
       console.error(e), r.status(500).end();
     }
   }),
-/*  app.use(async (req, res, next) => {
-    domain = "caliphapi.com";
+  app.use(async (req, res, next) => {
+    domain = "https://kuttobot.herokuapp.com/";
     if (req.protocol !== "https" && process.env.HTTPS)
       return res.redirect("https://" + req.hostname + req.url);
     if (
@@ -153,7 +153,7 @@ app.use(limiter),
             .slice(0, 10)}</center>`
         );
     next();
-  });*/
+  });
 const ssl = {
   key: fs.readFileSync(__dirname + "/ssl/private.key", "utf8"),
   cert: fs.readFileSync(__dirname + "/ssl/public.cert", "utf8"),
@@ -219,7 +219,7 @@ app.get("/", async (e, r) => {
     r.status(404).sendFile(process.cwd() + "/public/404.html");
   }),
   connectMongoDb().then(() => {
-   // https.createServer(ssl, app).listen(443);
+   https.createServer(ssl, app).listen(443);
     app.listen(PORT, () => {
       console.log(
         chalk.green(`example app listening at http://localhost:${PORT}`)
