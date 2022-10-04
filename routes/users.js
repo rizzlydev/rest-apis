@@ -81,9 +81,9 @@ router.post("/register", async (req, res) => {
         let token = randomText(6);
         addUser(email, username, hashedPassword, apikey, token);
         mailOptions = {
-          from: "verification@caliph.my.id",
+          from: "rizzowohq@gmail.com",
           to: `${email}`,
-          subject: "Verifikasi | Caliph Rest Api",
+          subject: "Verifikasi Untuk Menggunakan KuttoBot Rest API",
           html: `Token: ${token}<br><br>Klik untuk verifikasi : <a href="//${req.hostname}/users/verify?email=${email}&token=${token}">verifikasi</a>`,
         };
         await transporter.sendMail(mailOptions, (e, i) => {
